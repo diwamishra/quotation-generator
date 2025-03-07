@@ -13,10 +13,12 @@
         th, td { border: 1px solid black; padding: 10px; text-align: left; }
         label, input, textarea { display: block; width: 100%; margin-top: 10px; }
         button { margin-top: 20px; padding: 10px; }
+        .footer { margin-top: 20px; font-size: 12px; text-align: left; }
     </style>
 </head>
 <body>
     <div class="container">
+        <img src="logo.png" alt="Company Logo" width="150">
         <div class="header">PRIYA AUTO - Quotation/Proforma Invoice</div>
         <form id="quotationForm">
             <label>Name of Customer:</label>
@@ -38,6 +40,24 @@
             
             <button type="button" onclick="generatePDF()">Generate PDF</button>
         </form>
+        
+        <div class="footer">
+            <strong>RTGS DETAILS:</strong><br>
+            Name: PRIYA AUTO<br>
+            IFSC Code: UBIN0530336<br>
+            A/c: 3033051000014<br>
+            Bank: Union Bank of India<br>
+            Branch: Main Branch Jaunpur<br>
+            
+            <p><strong>Terms & Conditions:</strong></p>
+            <ol>
+                <li>Price and specifications are subject to change without notice.</li>
+                <li>Approximate delivery period is subject to 100% payment.</li>
+                <li>PRIYA AUTO is not liable for liquidated damages or penalties.</li>
+                <li>Payments must be made at our showroom in Jaunpur.</li>
+                <li>This is an invitation to offer, not a final contract.</li>
+            </ol>
+        </div>
     </div>
     
     <script>
@@ -47,23 +67,4 @@
             
             let name = document.getElementById('customerName').value;
             let address = document.getElementById('customerAddress').value;
-            let particulars = document.getElementById('particulars').value;
-            let amount = document.getElementById('amount').value;
-            
-            doc.setFontSize(16);
-            doc.text("PRIYA AUTO - Quotation/Proforma Invoice", 20, 20);
-            doc.setFontSize(12);
-            doc.text("Name of Customer: " + name, 20, 30);
-            doc.text("Address: " + address, 20, 40);
-            
-            doc.text("Particulars", 20, 50);
-            doc.text("Amount", 150, 50);
-            doc.line(20, 55, 190, 55);
-            doc.text(particulars, 20, 65);
-            doc.text(amount, 150, 65);
-            
-            doc.save("quotation.pdf");
-        }
-    </script>
-</body>
-</html>
+            let particulars = do
