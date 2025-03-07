@@ -7,8 +7,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
-        .container { width: 80%; margin: auto; border: 2px solid black; padding: 20px; }
-        .header { font-size: 24px; font-weight: bold; }
+        .container { width: 80%; margin: auto; border: 2px solid black; padding: 20px; text-align: left; }
+        .header { text-align: center; }
+        .header img { width: 150px; }
+        .header h2 { margin: 5px 0; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th, td { border: 1px solid black; padding: 10px; text-align: left; }
         label, input, textarea { display: block; width: 100%; margin-top: 10px; }
@@ -18,8 +20,11 @@
 </head>
 <body>
     <div class="container">
-        <img src="logo.png" alt="Company Logo" width="150">
-        <div class="header">PRIYA AUTO - Quotation/Proforma Invoice</div>
+        <div class="header">
+            <img src="https://yourusername.github.io/repo-name/logo.png" alt="Company Logo">
+            <h2>PRIYA AUTO - Quotation/Proforma Invoice</h2>
+        </div>
+        
         <form id="quotationForm">
             <label>Name of Customer:</label>
             <input type="text" id="customerName">
@@ -67,4 +72,37 @@
             
             let name = document.getElementById('customerName').value;
             let address = document.getElementById('customerAddress').value;
-            let particulars = do
+            let particulars = document.getElementById('particulars').value;
+            let amount = document.getElementById('amount').value;
+            
+            doc.setFontSize(16);
+            doc.text("PRIYA AUTO - Quotation/Proforma Invoice", 20, 20);
+            doc.setFontSize(12);
+            doc.text("Name of Customer: " + name, 20, 30);
+            doc.text("Address: " + address, 20, 40);
+            
+            doc.text("Particulars", 20, 50);
+            doc.text("Amount", 150, 50);
+            doc.line(20, 55, 190, 55);
+            doc.text(particulars, 20, 65);
+            doc.text(amount, 150, 65);
+            
+            doc.text("\nRTGS DETAILS:\n", 20, 80);
+            doc.text("Name: PRIYA AUTO", 20, 90);
+            doc.text("IFSC Code: UBIN0530336", 20, 100);
+            doc.text("A/c: 3033051000014", 20, 110);
+            doc.text("Bank: Union Bank of India", 20, 120);
+            doc.text("Branch: Main Branch Jaunpur", 20, 130);
+            
+            doc.text("\nTerms & Conditions:\n", 20, 140);
+            doc.text("1. Price and specifications are subject to change.", 20, 150);
+            doc.text("2. Approximate delivery period is subject to 100% payment.", 20, 160);
+            doc.text("3. PRIYA AUTO is not liable for liquidated damages.", 20, 170);
+            doc.text("4. Payments must be made at our showroom in Jaunpur.", 20, 180);
+            doc.text("5. This is an invitation to offer, not a final contract.", 20, 190);
+            
+            doc.save("quotation.pdf");
+        }
+    </script>
+</body>
+</html>
